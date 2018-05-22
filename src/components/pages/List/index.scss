@@ -1,0 +1,23 @@
+.list{
+    padding-top:0.46rem; 
+    header{
+        width : 100%;
+        height: 0.46rem;
+        background:#F8F8F8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border : 1px solid #E1E1E1;
+        .search{            
+            margin: 0 auto;
+            width : 3.59rem;
+            height: 0.29rem;
+            line-height: 0.29rem;
+            text-align: center;
+            font-size: 0.14rem;
+            margin-top:0.08rem;
+            background: #EEEEEE;
+            color : #929292;
+        }
+    }
+}

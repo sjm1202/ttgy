@@ -80,7 +80,23 @@ module.exports = function(proxy, allowedHost) {
       disableDotRule: true,
     },
     public: allowedHost,
-    proxy,
+    proxy: {
+      '/aura': {
+        target: 'https://aura.maizuo.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/aura': ''
+        }
+      },
+   
+      '/fruit': {
+        target: 'https://wap.fruitday.com/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/fruit': ''
+        }
+      }
+    },
     before(app) {
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
