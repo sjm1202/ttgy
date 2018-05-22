@@ -1,19 +1,10 @@
-
+import React, { Component } from 'react'
 import './index.scss'
-import React, {Component} from 'react'
-
-
-class Mine extends Component {
-	
-	
-	render () {
-		return (
-			<div>
-				Mine
-			</div>
-		)
-	}
-	
+class  Mine extends Component {
+    render () {
+        return (
+            <div className="mine">Mine</div>
+        )
+    }
 }
-
 export default Mine

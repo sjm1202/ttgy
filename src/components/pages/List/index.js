@@ -3,7 +3,7 @@ import './index.scss';
 import React, {Component} from 'react';
 import ContentBox from './ContentBox';
 
-class List extends Component {	
+class List extends Component {
 	render () {
 		return (
 			<div className="list">
@@ -16,7 +16,7 @@ class List extends Component {
 			</div>
 		)
 	}
-	
+
 }
 
 export default List;

@@ -1,0 +1,39 @@
+.header{
+  height: 0.38rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 .02rem .04rem #ccc;
+  margin-bottom: 0.04rem;
+  .left{
+    width: 2.785rem;
+    height: 0.38rem;
+    display: flex;
+    align-items: center;
+    padding-left: .15rem;
+    img{
+      height:0.14rem;
+    }
+    .map{
+      color:#8FBA69;
+      display:block;
+      span{
+        display:inline-block;
+        font-size:.14rem;
+        padding:0 .08rem;
+      }
+      .fa{
+        color:#65A032;
+        font-size: .16rem;
+      }
+    }
+
+  }
+  .right{
+    padding-right: .15rem;
+    .fa{
+      font-size: .21rem;
+    }
+  }
+}

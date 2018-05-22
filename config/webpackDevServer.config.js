@@ -81,21 +81,27 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy: {
-      '/aura': {
-        target: 'https://aura.maizuo.com/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/aura': ''
+        '/sjm': {
+            target: 'https://wap.fruitday.com/',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/sjm': ''
+            },
+        '/aura': {
+                target: 'https://aura.maizuo.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/aura': ''
+                }
+            },
+        '/fruit': {
+                target: 'https://wap.fruitday.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/fruit': ''
+                }
+            }
         }
-      },
-   
-      '/fruit': {
-        target: 'https://wap.fruitday.com/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/fruit': ''
-        }
-      }
     },
     before(app) {
       // This lets us open files from the runtime error overlay.
@@ -107,5 +113,5 @@ module.exports = function(proxy, allowedHost) {
       // https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
     },
-  };
-};
+  }
+}

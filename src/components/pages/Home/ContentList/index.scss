@@ -1,0 +1,61 @@
+.contentList{
+  width: 100%;
+  .contentItem{
+    padding-top: .1rem;
+    background-color: #F5F5F5;
+    .contentTitel{
+      width: 100%;
+      height: .64rem;
+      background: red;
+    }
+    .banner{
+      width: 100%;
+      height: 1.6rem;
+    }
+    .good_list{
+      height: 3.46rem;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      li{
+        height: 1.68rem;
+        width: 1.1831rem;
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        padding: .04rem;
+        .imgBox{
+          height: 1rem;
+          width: 1rem;
+          background: red;
+        }
+        .title{
+          width: 1rem;
+          color: #9B9B9B;
+          font-size: .16rem
+        }
+        .price{
+          width: 1rem;
+          color: #FF8B17;
+          font-size: .12rem
+        }
+        .fa{
+          position: absolute;
+          right: 0.04rem;
+          bottom: 0;
+          height:.19rem;
+          width: .19rem;
+          text-align: center;
+          line-height: .19rem;
+        }
+      }
+    }
+
+  }
+}
