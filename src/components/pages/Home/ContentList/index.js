@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import './index.scss'
 function ContentItem (props) {
     return (
-        <div class="contentItem">
+        <div className="contentItem">
             <div className="contentTitel"></div>
             <div className="banner"></div>
-            <lu className="good_list">
+            <ul className="good_list">
                 <li>
                     <div className="imgBox"></div>
                     <p className="title">ddd</p>
@@ -43,7 +43,7 @@ function ContentItem (props) {
                     <i className="fa fa-home"></i>
                 </li>
 
-            </lu>
+            </ul>
         </div>
     )
 
