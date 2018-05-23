@@ -1,0 +1,5 @@
+const CHANGE_USERINFO = "CHANGE_USERINFO";
+const EXIT = "EXIT";
+export {
+    CHANGE_USERINFO, EXIT
+}

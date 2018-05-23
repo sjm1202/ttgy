@@ -1,0 +1,130 @@
+.user{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: url(/images/login-bg.png)  no-repeat 0 0;
+    background-size: 100% auto;
+    header{
+        height: 1.2rem;
+        .user-info{
+            .user-img{
+                float: left;
+                margin-left: 0.3rem;
+                margin-top: 0.2rem;
+                i{
+                    font-size: 0.6rem;
+                }
+            }
+            .user-name{
+                float: left;
+                margin-top: 0.2rem;
+                margin-left: 0.2rem;
+                p{
+                    line-height: 0.25rem;
+                    color: #65A032;
+                    button{
+                        background: none;
+                        border: 1px solid #65A032;
+                        margin-left: 0.1rem;
+                        color: #FF8000;
+                        border-radius: 30%;
+                    }
+                }
+            }
+            .erweima{
+                float: right;
+                margin-top: 0.2rem;
+                margin-right:0.2rem; 
+                i{
+                    font-size: 0.6rem;
+                    display: block;
+                    color: #878787;
+                }
+            }
+        }
+    }
+    .banner{
+        width: 100%;
+        height: 0.54rem;
+        padding-top: 0.1rem;
+        display: flex;
+        justify-content: space-around;
+        div{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            line-height: 0.24rem;
+            i{
+                color: #FF8000;
+                font-weight: bold;
+            }
+        }
+    }
+    .order{
+        height: 0.45rem;
+        line-height: 0.45rem;
+        background:#FBFBFB;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.4rem;
+        border-bottom: 1px solid #F0EEEB;
+        color:#AAAAAA;
+        i.first{
+            font-size: 0.2rem;
+            margin: 0 0.1rem;           
+        }
+        i.last{
+            color:#DEDEDE;
+            margin: 0 0.1rem; 
+            font-size: 0.2rem;
+        }
+    }
+    .classify{
+        height: 0.8rem;
+        background:#FBFBFB;
+        line-height: 0.4rem;
+        text-align: center;
+        ul{
+            display: flex;
+            padding-top:0.15rem;
+            justify-content: space-around;
+            li{
+                display: flex;
+                flex-direction: column;
+                i{
+                    font-size: 0.2rem;
+                    color: #BBBBBB;
+                }
+                span{
+                    color: #BBBBBB;
+                }
+            }
+        }
+    }
+    .item-box {
+        width: 100%;
+        .item{
+            width: 100%;
+            height: 0.45rem;
+            line-height: 0.45rem;
+            background:#FBFBFB;
+            display: flex;
+            justify-content: space-between;            
+            border-bottom: 1px solid #F0EEEB;
+            color:#AAAAAA;
+            i.first{
+                font-size: 0.2rem;
+                margin: 0 0.1rem;           
+            }
+            i.last{
+                color:#DEDEDE;
+                margin: 0 0.1rem; 
+                font-size: 0.1rem;
+            }
+            span{
+                font-size: 0.14rem;
+            }
+        }
+      
+    }
+}
