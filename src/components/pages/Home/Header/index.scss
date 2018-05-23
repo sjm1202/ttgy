@@ -6,6 +6,11 @@
   align-items: center;
   box-shadow: 0 .02rem .04rem #ccc;
   margin-bottom: 0.04rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #fff;
   .left{
     width: 2.785rem;
     height: 0.38rem;

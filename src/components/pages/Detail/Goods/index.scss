@@ -1,0 +1,155 @@
+.detail_goods{
+  padding: .45rem 0;
+  background: #F5F5F5;
+  .goods_info{
+    background: #fff;
+    height: 1.72rem;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .title{
+      font-size: .20rem;
+    }
+    .sbutitle{
+      font-size: .16rem;
+    }
+    .price{
+      font-size: .12rem;
+      color:#FF8000;
+      span{
+        font-size: .32rem;
+      }
+    }
+    .option{
+      padding: .1rem;
+      display: flex;
+      justify-content: center;
+      span{
+        display: inline-block;
+        height:.4rem;
+        border: .01rem solid #ccc;
+        padding: .02rem .1rem;
+        border-radius: .03rem;
+        margin: 0 .05rem;
+        &.active{
+          background: #FF8000;
+          color: #fff;
+        }
+      }
+    }
+    .note{
+      color:#FF8000;
+      font-size: 0.14rem;
+    }
+  }
+  .goods_address{
+    height: .4rem;
+    display: flex;
+    background: #fff;
+    margin: .1rem 0;
+    .title{
+      display: inline-block;
+      width: .4rem;
+      flex-grow: 0;
+      flex-grow: 0;
+      line-height: .4rem;
+      text-align: center;
+    }
+    .info{
+      display: inline-block;
+      flex-grow: 1;
+      flex-shrink: 1;
+      line-height: .4rem;
+      .fa{
+        font-size: .18rem;
+        height: .2rem;
+        width:.2rem;
+        text-align: center;
+        line-height: .2rem;
+      }
+    }
+  }
+  .tips{
+    height: .4rem;
+    color:#CDCDDC;
+    padding-left: .08rem;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 0.1rem;
+    span{
+      font-size: .12rem;
+      padding-right:.08rem;
+      display: inline-block;
+    }
+    .fa{
+      color:#FF8000;
+      font-size: .18rem;
+    }
+  }
+  .goods_evalute{
+    background: #fff;
+    .title{
+      height: .32rem;
+      width:100%;
+      display:flex;
+      padding:0 .08rem;
+      justify-content: space-between;
+      line-height: .32rem;
+      background-color: #fff;
+      .fa{
+        font-size:.12rem;
+        padding-left:.08rem
+      }
+    }
+    .contents{
+      .item{
+        height: 1.16rem;
+        padding: .08rem;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .contentInfo{
+          height: .36rem;
+          display:flex;
+          justify-content: space-between;
+          line-height: .36rem;
+          .left{
+            display:flex;
+            width: 1.8rem;
+            .imgBox{
+              height: .36rem;
+              width: .36rem;
+              background: red;
+              margin-right: .20rem;
+            }
+          }
+        }
+        .contentLevel{
+          height: .30rem;
+          display: flex;
+          align-items: center;
+          span{
+            padding-right: .2rem;
+          }
+        }
+        .contentMsg{
+          height: .2rem;
+        }
+      }
+    }
+    .moreEvalue{
+      height: 0.4rem;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      span{
+        border: .01rem solid #ccc;
+        display:inline-block;
+        padding: .03rem .16rem;
+        border-radius: .13rem;
+      }
+    }
+  }
+}

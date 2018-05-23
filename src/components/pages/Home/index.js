@@ -8,7 +8,6 @@ import Activity from './Activity'
 import ContentItem from './ContentList'
 import './index.scss'
 class Home extends Component{
-   
     render(){
         return (
             <div className='home'>

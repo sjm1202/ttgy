@@ -7,16 +7,22 @@ class Activity extends Component {
         this.state = {
             activitys:[]
         }
+        this.unMountFlag = false;
     }
     componentDidMount(){
         axios.get('/sjm/v3/ad/homepage',{
             params:{type:2,lonlat:'116.252423%2C40.11634',ad_code:'110114'}
         }).then((res) => {
-        
+            if( this.unMountFlag ){
+                return;
+            }
             this.setState({
                 activitys: res.data.data.banner.mainBanners[1].content
             })
         })
+    }
+    componentWillUnmount () {
+        this.unMountFlag = true;
     }
     render () {
         return (

@@ -13,12 +13,16 @@ class Banner extends  Component{
         this.state = {
             banners: []
         }
+        this.unMountFlag = false;
     }
     //https://wap.fruitday.com/v3/ad/homepage?connect_id=&type=2&lonlat=116.252423%2C40.11634&ad_code=110114&tab_id=
     getBaners () {
         axios.get('/sjm/v3/ad/homepage',{
             params:{type:2,lonlat:'116.252423%2C40.11634',ad_code:'110114'}
         }).then((res)=>{
+            if( this.unMountFlag ){
+                return;
+            }
             this.setState({
                 banners: res.data.data.banner.mainBanners[0].content
             })
@@ -36,6 +40,9 @@ class Banner extends  Component{
             autoplay: true,
             loop: true
             })
+    }
+    componentWillUnmount () {
+        this.unMountFlag = true;
     }
     render () {
 
