@@ -12,8 +12,14 @@ class Detail extends Component {
             info:{}
         }
     }
+    componentWillReceiveProps(){
+        this.getData();
+    }
     componentDidMount(){
-        console.log(this.props);
+        this.getData();
+    }
+    getData(){
+        console.log(this.props,101010);
         let { params } = this.props.location;
         console.log(params)
         if(params){
@@ -33,7 +39,6 @@ class Detail extends Component {
                 })
             })
         }
-
     }
     render() {
         return (

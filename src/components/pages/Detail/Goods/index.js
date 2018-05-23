@@ -1,23 +1,42 @@
 import React, {Component} from 'react'
 import './index.scss'
 import Banner from './Banner'
-import {withRouter} from 'react-router-dom'
+import {withRouter, NavLink} from 'react-router-dom'
 import axios from "axios/index";
 function Info(props) {
-    let {productInfo,productItem} = props;
+    console.log(props,1111111111111111111111111)
+    let {productInfo,productItem,sendTimeMsg} = props.info;
     if(!productInfo){
         return null;
     }
+
     return(
         <div className='goods_info'>
             <h5 className="title">{productInfo.product_name}</h5>
             <p className="sbutitle">{productInfo.product_desc}</p>
-            <div className="price">￥<span>{productInfo.price}</span>.9</div>
+            <div className="price">￥<span>{parseInt(productInfo.price)}</span>{productInfo.price.substring(productInfo.price.indexOf("."))}</div>
             <div className="option">
-                <span className='active'>11</span>
-                <span>11</span>
+                {
+                    productItem.map(item => {
+                        return(
+                            <NavLink to={{
+                                pathname:'/detail/goods',
+                                params:{
+                                    store_id_list: 3,
+                                    product_id: item.id,
+                                    store_id: item.store_id,
+                                    delivery_code: 3
+                                }}} key={item.id}>
+                                {item.volume}
+                                <span>明日达</span>
+
+                            </NavLink>
+                        )
+                    })
+                }
+
             </div>
-            <p className="note">sss</p>
+            <p className="note">{sendTimeMsg}</p>
         </div>
     )
 }
@@ -95,7 +114,6 @@ class Goods extends Component{
     }
     componentDidMount(){
         let { params } = this.props.location;
-        console.log(params)
         if(params){
             axios.get('/sjm/v3/product/detail',{
                 params:{
@@ -105,9 +123,7 @@ class Goods extends Component{
                     delivery_code: params.delivery_code
                 }
             }).then(res => {
-                console.log(res);
                 let { data } = res.data;
-                console.log(data);
                 this.setState({
                     info: data
                 })
@@ -115,14 +131,15 @@ class Goods extends Component{
         }
     }
     render(){
-        let {info} = this.state;
+        let {info} = this.state
+        console.log(info);
         if(!info){
             return null;
         }
         return (
             <div className="detail_goods">
                 <Banner ></Banner>
-                <Info productInfo={info.productInfo} productItem={info.productItem}></Info>
+                <Info info={info}></Info>
                 <Address></Address>
                 <Tips></Tips>
                 <Evaluate></Evaluate>

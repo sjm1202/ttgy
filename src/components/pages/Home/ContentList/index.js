@@ -75,6 +75,7 @@ function ColList(props) {
                         </div>
                         </NavLink>
                     </li>
+
                 )
             })}
         </ul>

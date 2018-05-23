@@ -25,16 +25,22 @@
       padding: .1rem;
       display: flex;
       justify-content: center;
-      span{
-        display: inline-block;
+      a{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         height:.4rem;
         border: .01rem solid #ccc;
         padding: .02rem .1rem;
         border-radius: .03rem;
         margin: 0 .05rem;
+        text-align: center;
         &.active{
           background: #FF8000;
           color: #fff;
+        }
+        span{
+          display: block;
         }
       }
     }
