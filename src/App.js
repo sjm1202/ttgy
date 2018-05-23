@@ -50,8 +50,8 @@ App.defaultProps = {
         {id: '0002', path: '/list', component: List, isExact: false},
         {id: '0003', path: '/cart', component: Cart, isExact: false},
         {id: '0004', path: '/mine', component: Mine, isExact: false},
-        {id: '0005', path: '/detail', component: Detail, isExact: false}
-        {id: '0006', path : '/not-found', component : NotFound}
+        {id: '0005', path: '/detail', component: Detail, isExact: false},
+        {id: '0006', path: '/not-found', component: NotFound}
     ]
 }
 export default withRouter(App);
