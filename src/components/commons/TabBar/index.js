@@ -15,7 +15,7 @@ function NavItem (props) {
 class TabBar extends Component {
     render () {
         let { tabBarItems } = this.props;
-        console.log(tabBarItems);
+
         return (
             <ul className='tabBar'>
                 {tabBarItems.map((item)=> <NavItem item={item} key={item.id}/> )}

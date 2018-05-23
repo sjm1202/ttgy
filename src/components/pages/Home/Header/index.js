@@ -6,7 +6,7 @@ class Header extends Component {
             <div className='header'>
                 <div className="left">
                     <img src="/images/ci_20171025_1.png" alt=""/>
-                    <a className="map" href="#">
+                    <a className="map">
                         <span>啤酒小院</span>
                         <i className='fa fa-caret-down'></i>
                     </a>

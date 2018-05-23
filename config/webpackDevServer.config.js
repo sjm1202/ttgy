@@ -87,19 +87,12 @@ module.exports = function(proxy, allowedHost) {
             pathRewrite: {
                 '^/sjm': ''
             },
+        },
         '/aura': {
-                target: 'https://aura.maizuo.com/',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/aura': ''
-                }
-            },
-        '/fruit': {
-                target: 'https://wap.fruitday.com/',
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/fruit': ''
-                }
+            target: 'https://aura.maizuo.com/',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/aura': ''
             }
         }
     },

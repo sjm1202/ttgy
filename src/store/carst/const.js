@@ -1,4 +1,0 @@
-const ADD_FOOD_TO_CARST = 'ADD_FOOD_TO_CARST'
-export {
-    ADD_FOOD_TO_CARST
-}

@@ -18,7 +18,7 @@ class ContentBox extends Component {
 	}
 	getLists (id){
 		id = id ? id :'303'
-		axios.get('/fruit/v3/product/category_list?store_id_list=1', {
+		axios.get('/sjm/v3/product/category_list?store_id_list=1', {
 			params:{ 'class_id': id }
 		}).then(res => {
 			this.setState({
