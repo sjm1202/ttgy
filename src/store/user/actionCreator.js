@@ -3,6 +3,12 @@ import {
 } from './const';
 
 export default {
+    
+    hasUser (){
+        return{ type:CHANGE_USERINFO, 
+                userInfo : localStorage.userInfo ? JSON.parse(localStorage.userInfo) : null
+            }
+    },
     //登录的方法
     login ( {username, password, success, fail}){
         let _fail = fail || function (){};
@@ -10,7 +16,7 @@ export default {
         return dispatch => {
             setTimeout ( ()=>{
                 if(username === 'sqq' && password === '123'){
-                    dispatch ({
+                    dispatch ({ 
                         type : CHANGE_USERINFO,
                         userInfo : {
                             username : '孙漂亮',

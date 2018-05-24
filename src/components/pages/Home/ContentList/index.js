@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './index.scss'
 import 'axios'
 import axios from "axios/index";
-import {Route, NavLink} from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
 function ContentTitel( props) {
     let { content } = props
     return(
@@ -123,7 +123,7 @@ class ContentList extends Component {
                         break;
                         case 'bigImageBanner':
                             return <Banner content = {item.content[0]} key={item.group_id}/>
-                            break;
+                        break;
                         case '3perLineBanner':
                             return <GoodList content = {item.content} key={item.group_id}/>
                         break;
@@ -135,7 +135,7 @@ class ContentList extends Component {
                             break;
                         default:
                             return null;
-                        break
+                        break;
                     }
                 }))}
             </div>
