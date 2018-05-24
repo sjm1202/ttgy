@@ -6,7 +6,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-html,body,#root,.app,.mine{
+.loading2{
+  background: url('/images/loading2.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#root,.app,.mine{
   height: 100%;
   width: 100%;
 }

@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 import './index.scss'
 import Banner from './Banner'
-import {withRouter, NavLink} from 'react-router-dom'
-import axios from "axios/index";
+import {withRouter, Link} from 'react-router-dom'
+import axios from "axios";
+import Comment from "../Comment";
 function Info(props) {
-    console.log(props,1111111111111111111111111)
-    let {productInfo,productItem,sendTimeMsg} = props.info;
+    let {productInfo,productItem,sendTimeMsg,product_id} = props.info;
     if(!productInfo){
         return null;
     }
-
     return(
         <div className='goods_info'>
             <h5 className="title">{productInfo.product_name}</h5>
@@ -19,18 +18,18 @@ function Info(props) {
                 {
                     productItem.map(item => {
                         return(
-                            <NavLink to={{
+                            <Link to={{
                                 pathname:'/detail/goods',
                                 params:{
                                     store_id_list: 3,
                                     product_id: item.id,
                                     store_id: item.store_id,
                                     delivery_code: 3
-                                }}} key={item.id}>
+                                }}} key={item.id} className={item.id === product_id ? 'active' : ''} >
                                 {item.volume}
                                 <span>明日达</span>
 
-                            </NavLink>
+                            </Link>
                         )
                     })
                 }
@@ -46,7 +45,7 @@ function Address (props) {
             <span className="title">送至</span>
             <span className="info">
                 <i className='fa fa-map-marker'></i>
-                ddd
+                啤酒小院
             </span>
         </div>
     )
@@ -66,41 +65,54 @@ function Tips(){
     )
 }
 function Evaluate(props) {
+    let {comment} = props;
+    if(!comment){
+        return null;
+    }
     return (
         <div className='goods_evalute'>
             <div className="title">
                 <div className="left">
-                    评价(7580)
+                    评价({comment.num.total})
                 </div>
                 <div className="right">
-                    <span></span>
+                    <span>{comment.good}%</span>
                     好评
                     <i className='fa fa-chevron-right'></i>
                 </div>
             </div>
             <ul className='contents'>
-                <li className='item'>
-                    <div className="contentInfo">
-                        <div className="left">
-                            <div className="imgBox"></div>
-                            <div className="user">1111111</div>
-                            <i></i>
-                        </div>
-                        <div className="time">
-                            2222
-                        </div>
-                    </div>
-                    <div className="contentLevel">
-                        <span>口感5</span>
-                        <span>颜值5</span>
-                    </div>
-                    <div className="contentMsg">
-                        ddddd
-                    </div>
-                </li>
+                {
+                    comment.data.map(item =>{
+                        return(
+                            <li className='item' key={item.id}>
+                                <div className="contentInfo">
+                                    <div className="left">
+                                        <div className="imgBox">
+                                            <img src={item.userface} alt=""/>
+                                        </div>
+                                        <div className="user_name">{item.user_name}</div>
+                                        <i></i>
+                                    </div>
+                                    <div className="time">
+                                        {item.time}
+                                    </div>
+                                </div>
+                                <div className="contentLevel">
+                                    <span>口感{item.star_eat}</span>
+                                    <span>颜值{item.star_show}</span>
+                                </div>
+                                <div className="contentMsg">
+                                    {item.content}
+                                </div>
+                            </li>
+                        )
+                    })
+                }
+
             </ul>
             <div className="moreEvalue">
-                <span>查看全部评价</span>
+                <Link to={{pathname:'/detail/comment',params:props.params}} >查看全部评价</Link>
             </div>
         </div>
     )
@@ -109,11 +121,18 @@ class Goods extends Component{
     constructor(props){
         super(props)
         this.state = {
-            info:{}
+            info:{},
+            comment:null
         }
     }
+    componentWillReceiveProps(props){
+        this.getData(props);
+    }
     componentDidMount(){
-        let { params } = this.props.location;
+        this.getData(this.props);
+    }
+    getData(props){
+        let { params } = props.location;
         if(params){
             axios.get('/sjm/v3/product/detail',{
                 params:{
@@ -124,25 +143,37 @@ class Goods extends Component{
                 }
             }).then(res => {
                 let { data } = res.data;
+                data.product_id = params.product_id;
                 this.setState({
                     info: data
+                })
+            })
+            axios.get('/sjm/v3/comment/rate_and_comment',{
+                params:{
+                    product_id: params.product_id
+                }
+            }).then(res => {
+                let { data } = res.data;
+                this.setState({
+                    comment: data
                 })
             })
         }
     }
     render(){
-        let {info} = this.state
-        console.log(info);
-        if(!info){
-            return null;
-        }
+        let {info,comment} = this.state
+        let {params} =  this.props.location;
         return (
             <div className="detail_goods">
-                <Banner ></Banner>
-                <Info info={info}></Info>
+                <div className='detail_banner_wrap loading2'>
+                    <Banner info={info}></Banner>
+                </div>
+                <div className='detail_info_wrap'>
+                    <Info info={info}></Info>
+                </div>
                 <Address></Address>
                 <Tips></Tips>
-                <Evaluate></Evaluate>
+                <Evaluate comment={comment} params={params}></Evaluate>
 
             </div>
         )

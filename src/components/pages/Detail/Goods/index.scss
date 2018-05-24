@@ -1,6 +1,14 @@
 .detail_goods{
   padding: .45rem 0;
   background: #F5F5F5;
+  .detail_banner_wrap{
+    height:3.75rem;
+    width:100%;
+  }
+  .detail_info_wrap{
+    height: 1.72rem;
+    width:100%;
+  }
   .goods_info{
     background: #fff;
     height: 1.72rem;
@@ -104,10 +112,16 @@
       justify-content: space-between;
       line-height: .32rem;
       background-color: #fff;
-      .fa{
-        font-size:.12rem;
-        padding-left:.08rem
+      .right{
+        span{
+          color:#FF8000;
+        }
+        .fa{
+          font-size:.12rem;
+          padding-left:.08rem
+        }
       }
+
     }
     .contents{
       .item{
@@ -127,8 +141,11 @@
             .imgBox{
               height: .36rem;
               width: .36rem;
-              background: red;
               margin-right: .20rem;
+              img{
+                height:.36rem;
+                width: .36rem;
+              }
             }
           }
         }
@@ -150,7 +167,7 @@
       display:flex;
       align-items: center;
       justify-content: center;
-      span{
+      a{
         border: .01rem solid #ccc;
         display:inline-block;
         padding: .03rem .16rem;

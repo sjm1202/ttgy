@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './index.scss'
 import 'axios'
 import axios from "axios/index";
-import { NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 function ContentTitel( props) {
     let { content } = props
     return(
@@ -113,7 +113,6 @@ class ContentList extends Component {
         if(!contentItems){
             return null;
         }
-        console.log(contentItems);
         return (
             <div className='contentList'>
                 {contentItems.map((item => {

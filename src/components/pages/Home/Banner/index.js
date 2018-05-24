@@ -33,9 +33,10 @@ class Banner extends  Component{
         this.getBaners();
     }
     componentDidUpdate(){
-        this.swiper = new Swiper(this.el,{
+        let{el,el2} = this;
+        this.swiper = new Swiper(el,{
             pagination: {
-                el: '.swiper-pagination'
+                el: el2
             },
             autoplay: true,
             loop: true
@@ -55,7 +56,7 @@ class Banner extends  Component{
                         )
                     })}
                 </div>
-                <div className="swiper-pagination"></div>
+                <div className="swiper-pagination" ref={el => this.el2 = el}></div>
             </div>
         )
     }

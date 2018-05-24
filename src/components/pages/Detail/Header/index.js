@@ -12,7 +12,6 @@ class Header extends Component{
         let { params}  = this.props.location;
         let { history } = this.props;
         if(params){
-            console.log(params,555)
             this.setState({
                 params: params
             })
@@ -24,7 +23,6 @@ class Header extends Component{
         let { params }  = this.props.location;
         let { history } = this.props;
         if(params){
-            console.log(params,555)
             this.setState({
                 params: params
             })
@@ -46,7 +44,7 @@ class Header extends Component{
                 <ul className="nav">
                     <li><NavLink to={{pathname:'/detail/goods',params:params}}>商品</NavLink></li>
                     <li><NavLink to={{pathname:'/detail/det',params:params}}>详情</NavLink></li>
-                    <li><NavLink to={{pathname:'/detail/mark',params:params}}>评价</NavLink></li>
+                    <li><NavLink to={{pathname:'/detail/comment',params:params}}>评价</NavLink></li>
                 </ul>
                 <div className="more">
                     <i className="fa fa-reorder"></i>

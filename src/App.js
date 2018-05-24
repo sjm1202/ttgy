@@ -29,7 +29,7 @@ class App extends Component {
   renderFooter(){
       let {pathname} = this.props.location;
       let reg = /^\/detail/g
-      if(reg.test(pathname)){
+      if(reg.test(pathname) || pathname === '/mine/login'){
           return ;
       }else{
           return  <TabBar></TabBar>
