@@ -3,6 +3,9 @@ import './index.scss'
 import 'axios'
 import axios from "axios/index";
 import {NavLink} from 'react-router-dom'
+import {bindActionCreators} from 'redux'
+import actionCreate from '../../../../store/cart/actionCreator'
+import {connect} from 'react-redux'
 function ContentTitel( props) {
     let { content } = props
     return(
@@ -16,7 +19,7 @@ function Banner( props) {
     )
 }
 function GoodList(props) {
-    let { content } = props;
+    let { content, addFood} = props;
 
     return (
         <ul className="good_list">
@@ -38,7 +41,7 @@ function GoodList(props) {
                                 </div>
                                 <p className="title">{item.title}</p>
                                 <span className="price">￥{item.price}/<em>{item.volume}</em></span>
-                                <i className="fa fa-plus-circle"></i>
+                                <i className="fa fa-plus-circle" onClick={addFood.bind(this,item)}></i>
                             </NavLink>
                         </li>
                     )
@@ -49,7 +52,7 @@ function GoodList(props) {
     )
 }
 function ColList(props) {
-    let { content } = props;
+    let { content, addFood } = props;
     return (
         <ul className="colList">
             {content.map(item => {
@@ -71,7 +74,7 @@ function ColList(props) {
                             <h5 className='title'>{item.title}</h5>
                             <p className="describe">{item.subtitle}</p>
                             <span className='price'>￥{item.price}/<em>{item.volume}</em></span>
-                            <i className="fa fa-plus-circle"></i>
+                            <i className="fa fa-plus-circle" onClick={addFood.bind(this,item)}></i>
                         </div>
                         </NavLink>
                     </li>
@@ -88,6 +91,12 @@ class ContentList extends Component {
             contentItems: []
         }
         this.unMountFlag = false;
+        this.addFood = this.addFood.bind(this)
+    }
+    addFood(food,e){
+        e.preventDefault()
+        let {addFoodToCart} = this.props;
+        addFoodToCart(food)
     }
     getData(){
         axios.get('/sjm/v3/ad/homepage',{
@@ -110,6 +119,7 @@ class ContentList extends Component {
     }
     render () {
         let { contentItems } = this.state;
+
         if(!contentItems){
             return null;
         }
@@ -124,13 +134,13 @@ class ContentList extends Component {
                             return <Banner content = {item.content[0]} key={item.group_id}/>
                         break;
                         case '3perLineBanner':
-                            return <GoodList content = {item.content} key={item.group_id}/>
+                            return <GoodList content = {item.content} key={item.group_id} addFood={this.addFood}/>
                         break;
                         case 'bigImageBannerLow':
                             return <ContentTitel content = {item.content[0]} key={item.group_id}/>
                         break;
                         case 'normalBanner_v51':
-                            return <ColList content = {item.content} key={item.group_id}/>
+                            return <ColList content = {item.content} key={item.group_id} addFood={this.addFood}/>
                             break;
                         default:
                             return null;
@@ -141,4 +151,4 @@ class ContentList extends Component {
         )
     }
 }
-export default ContentList
+export default connect(state => state,dispatch=>bindActionCreators(actionCreate,dispatch))(ContentList)

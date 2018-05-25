@@ -3,7 +3,6 @@ import './index.scss'
 import Banner from './Banner'
 import {withRouter, Link} from 'react-router-dom'
 import axios from "axios";
-import Comment from "../Comment";
 function Info(props) {
     let {productInfo,productItem,sendTimeMsg,product_id} = props.info;
     if(!productInfo){

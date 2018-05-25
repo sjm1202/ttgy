@@ -36,15 +36,17 @@
     }
 }
 .cart-two{
-    width: 100%;
-    height: 100%;
-    background: #fff;
+    padding: .45rem 0 1rem;
     header{
         width:100%;
         height: 0.45rem;
         line-height: 0.45rem;
         text-align: center;
         border-bottom : 1px solid #E3E3E3;
+        position: fixed;
+        top:0;
+        left:0;
+        background-color: #fff;
         div{
             display: flex;
             color: #9FC276;
@@ -70,6 +72,7 @@
         line-height: 0.8rem;
         display: flex;
         justify-content: space-between;
+        background: #fff;
         span{
             color: #A2A2A2;
             margin: 0 0.1rem;
@@ -84,6 +87,7 @@
     }
     .black{width: 100%;height: 0.15rem; background:#F5F5F5 }
     .good-box{
+        background: #fff;
         .good-header{
             height:0.31rem;
             border-bottom: 1px solid #E8E8E8;
@@ -103,13 +107,13 @@
                     height: 1.11rem; 
                     display: flex;
                     border-bottom:1px solid #D0D0D0;
+                    align-items: center;
                     .check{
                         width: 0.16rem;
                         height: 0.16rem;
-                        float: left;
                         border-radius: 50%;
                         background: #FF8000;
-                        margin:  0.45rem 0.1rem 0 0.1rem;
+                        margin:  0.1rem;
                         i{
                             color: #fff;
                         }
@@ -117,13 +121,15 @@
                     .img-box{
                         width: 0.9rem;
                         height:0.9rem;
-                        float: left;
-                        margin-top: 0.2rem;
                         margin-right: 0.1rem;
                         background: pink;
+                        img{
+                            width: 0.9rem;
+                            height:0.9rem;
+                        }
                     }
                     .item-info{
-                        margin-top:0.2rem;
+                        width: 2.3rem;
                         h3{
                             color: #000;
                             font-size: 0.14rem;
@@ -187,9 +193,13 @@
         line-height: 0.5rem;
         left: 0;
         box-shadow: 0 -0.02rem 0.02rem 0 rgba(0,0,0,.15);
+        background-color: #fff;
+        display: flex;
+        justify-content: space-between;
         .check{
-            float: left;
             margin-left: 0.1rem;
+            display: flex;
+            align-items: center;
             input{
                 width: 0.16rem;
                 height: 0.16rem;
@@ -197,15 +207,12 @@
             }
         }
         .total{
-            float: left;  
-            margin-left: 1rem;
            b{
                 color: #FF8000;
                font-size: 0.2rem;
            }
         }
         .pay{
-            float: right;
             width: 1.1rem;
             font-size: 0.18rem;
             text-align: center;

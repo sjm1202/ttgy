@@ -1,10 +1,26 @@
-import store from '../index'
+import { ADD_FOOD_TO_CART, DEL_FOOD_FROM_CART, SYNC_CART } from './const'
 const actionCreator = {
-    addFoodToCarst (food) {
+    addFoodToCart (food) {
         return dispatch => {
             setTimeout(()=>{
-                let action = {type:'test',food}
-            },1000);
+                let action = {type: ADD_FOOD_TO_CART, food}
+                dispatch(action)
+            },300);
+        }
+    },
+    delFoodFromCart(food){
+        return dispatch => {
+            setTimeout(()=>{
+                let action = {type: DEL_FOOD_FROM_CART, food}
+                dispatch(action)
+            },300);
+        }
+    },
+    syncCart(){
+        return {
+            type: SYNC_CART,
+            cart : localStorage.cart ? JSON.parse(localStorage.cart) : null
         }
     }
 }
+export default actionCreator

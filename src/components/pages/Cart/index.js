@@ -2,7 +2,27 @@ import React, { Component } from 'react'
 import './index.scss';
 import { Link } from 'react-router-dom';
 import TabBar from '../../commons/TabBar'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import actionCreater from '../../../store/cart/actionCreator'
 class Cart extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            foodList: [],
+            total:{num:0,money:0,weight:0}
+        }
+        this.changeCartInfo.bind(this)
+    }
+    changeCartInfo(food,isAdd,e){
+        e.preventDefault()
+        let {addFoodToCart,delFoodFromCart} = this.props
+        if(isAdd){
+            addFoodToCart(food)
+        }else{
+            delFoodFromCart(food)
+        }
+    }
     renderKinds(){
         return(
             <div className='cart-one'>
@@ -24,7 +44,22 @@ class Cart extends Component{
             </div>                
         )     
     }
-    render () {   
+    componentWillReceiveProps(props){
+        let {cart} = props
+        this.setState({foodList:cart.foodList,total:cart.total})
+    }
+    componentDidMount(){
+        let {cart} = this.props
+        this.setState({foodList:cart.foodList,total:cart.total})
+    }
+    render () {
+
+        let {foodList,total} = this.state
+        if(foodList.length === 0){
+            return this.renderKinds()
+        }else{
+
+
             return(
                 <div className= 'cart-two'>
                     <header>
@@ -48,34 +83,44 @@ class Cart extends Component{
                         </div>
                         <div className='good-item'>
                             <ul>
-                                <li className='item'>
-                                    <div className='check'><i className='fa fa-check'></i></div>
-                                    <div className='img-box'>
-                                        <img src='' alt=''/>
-                                    </div>
-                                    <div className='item-info'>
-                                        <h3>鲜摘蓝莓</h3>
-                                        <p className='num'><span>2</span>盒</p>
-                                        <div className='price-box'>
-                                            <p className='price'>￥<b>29.9</b></p>
-                                            <p className='small-logo'>明日达</p>
-                                            <p className='num2'>
-                                                <span><i className='del fa fa-minus'></i></span>1
-                                                <span><i className='add fa fa-plus'></i></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
+                                {
+                                    foodList.map(item=> {
+                                        return (
+                                            <li className='item' key={item.banner_ad_id}>
+                                                <div className='check'><i className='fa fa-check'></i></div>
+                                                <div className='img-box'>
+                                                    <img src={item.image} alt=''/>
+                                                </div>
+                                                <div className='item-info'>
+                                                    <h3>{item.title}</h3>
+                                                    <p className='num'><span>{item.volume}</span></p>
+                                                    <div className='price-box'>
+                                                        <p className='price'>￥<b>{item.price}</b></p>
+                                                        <p className='small-logo'>明日达</p>
+                                                        <p className='num2'>
+                                                            <span onClick={this.changeCartInfo.bind(this,item,false)}><i className='del fa fa-minus'></i></span>
+                                                            {item.num}
+                                                            <span onClick={this.changeCartInfo.bind(this,item,true)}><i className='add fa fa-plus'></i></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                }
+
                             </ul>
                         </div>
                     </div>
                     <div className='footer'>
-                        <p className='check'><input type='checkbox'/>全选</p>
-                        <p className='total'>合计：<span>￥</span><b>69.9</b></p>
-                        <p className='pay'>结算(<span>2</span>)</p>
+                        <p className='check'><input type='checkbox'/><span>全选</span></p>
+                        <p className='total'>合计：<span>￥</span><b>{parseFloat(total.money).toFixed(2)}</b></p>
+                        <p className='pay'>结算(<span>{total.num}</span>)</p>
                     </div>
-                </div>           
+                </div>
             );
+        }
+
     }
 }
-export default Cart
+export default connect(state=>state,dispatch=>bindActionCreators(actionCreater,dispatch))(Cart)

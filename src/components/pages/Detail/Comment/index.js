@@ -117,7 +117,7 @@ class Comment extends Component {
                 </div>
                 <div className="tip">
                     <i className='fa fa-check-circle'></i>
-                    <i className='fa fa-circle-o'></i>
+                    {/*<i className='fa fa-circle-o'></i>*/}
                     <span>只看有内容的评价</span>
                 </div>
                 <ListView

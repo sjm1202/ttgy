@@ -1,6 +1,5 @@
 const state ={
-    foodList:[
-        {id: 1, foodName: '苹果' }
-    ]
+    foodList:[],
+    total:{num: 0 , weight: 0,money:0}
 }
 export default state
