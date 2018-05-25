@@ -86,7 +86,7 @@ class Cart extends Component{
                                 {
                                     foodList.map(item=> {
                                         return (
-                                            <li className='item' key={item.banner_ad_id}>
+                                            <li className='item' key={item.target_id}>
                                                 <div className='check'><i className='fa fa-check'></i></div>
                                                 <div className='img-box'>
                                                     <img src={item.image} alt=''/>

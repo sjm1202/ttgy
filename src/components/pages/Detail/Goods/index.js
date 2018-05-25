@@ -24,7 +24,7 @@ function Info(props) {
                                     product_id: item.id,
                                     store_id: item.store_id,
                                     delivery_code: 3,
-                                    food:item.food
+                                    food:item
                                 }}} key={item.id} className={item.id === product_id ? 'active' : ''} >
                                 {item.volume}
                                 <span>明日达</span>
@@ -138,11 +138,13 @@ class Goods extends Component{
                 params:{
                     store_id_list: params.store_id_list,
                     store_id: params.store_id,
-                    delivery_code: params.delivery_code
+                    delivery_code: params.delivery_code,
+                    product_id:params.product_id
                 }
             }).then(res => {
                 let { data } = res.data;
                 data.product_id = params.product_id;
+
                 this.setState({
                     info: data
                 })

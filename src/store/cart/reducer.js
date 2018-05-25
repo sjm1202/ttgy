@@ -9,7 +9,7 @@ const reducer= (state = _state,action = {})=>{
         case ADD_FOOD_TO_CART:
             let flag = false;
             new_state.foodList.map(item => {
-                if(item.banner_ad_id === action.food.banner_ad_id){
+                if(item.target_id === action.food.target_id){
                     flag = true
                     item.num++
                     return item
@@ -27,7 +27,7 @@ const reducer= (state = _state,action = {})=>{
         break;
         case DEL_FOOD_FROM_CART:
             let arr = new_state.foodList.filter(item=>{
-                if(item.banner_ad_id === action.food.banner_ad_id){
+                if(item.target_id === action.food.target_id){
                     item.num--;
                     if(item.num === 0) {
                         Toast.success('删除成功',.5)
