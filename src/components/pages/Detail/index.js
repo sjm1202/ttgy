@@ -10,19 +10,24 @@ class Detail extends Component {
     constructor(props){
         super(props)
         this.state = {
-            info:{}
+            food:{}
         }
+        this.changeInfo.bind(this)
+    }
+    changeInfo(food){
+        this.setState({food:food})
     }
     render() {
+        let {food} = this.state
         return (
             <div className='detail'>
                 <Header></Header>
                 <Switch>
-                    <Route path='/detail/goods' component={Goods} ></Route>
+                    <Route path='/detail/goods' component={Goods}></Route>
                     <Route path='/detail/det' component={Det} ></Route>
                     <Route path='/detail/comment' component={Comment} ></Route>
                 </Switch>
-                <Footer></Footer>
+                <Footer food={food}></Footer>
             </div>
         )
     }

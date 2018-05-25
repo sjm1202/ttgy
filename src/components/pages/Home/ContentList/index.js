@@ -33,7 +33,8 @@ function GoodList(props) {
                                     store_id_list: 3,
                                     product_id: item.target_id,
                                     store_id: item.store_id,
-                                    delivery_code: 3
+                                    delivery_code: 3,
+                                    food:item
                                     }
                                 }}>
                                 <div className="imgBox">

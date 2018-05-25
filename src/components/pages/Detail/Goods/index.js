@@ -23,7 +23,8 @@ function Info(props) {
                                     store_id_list: 3,
                                     product_id: item.id,
                                     store_id: item.store_id,
-                                    delivery_code: 3
+                                    delivery_code: 3,
+                                    food:item.food
                                 }}} key={item.id} className={item.id === product_id ? 'active' : ''} >
                                 {item.volume}
                                 <span>明日达</span>
@@ -131,12 +132,11 @@ class Goods extends Component{
         this.getData(this.props);
     }
     getData(props){
-        let { params } = props.location;
+        let { params} = props.location;
         if(params){
             axios.get('/sjm/v3/product/detail',{
                 params:{
                     store_id_list: params.store_id_list,
-                    product_id: params.product_id,
                     store_id: params.store_id,
                     delivery_code: params.delivery_code
                 }
