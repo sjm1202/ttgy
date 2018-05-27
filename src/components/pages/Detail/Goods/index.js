@@ -18,13 +18,11 @@ function Info(props) {
                     productItem.map(item => {
                         return(
                             <Link to={{
-                                pathname:'/detail/goods',
-                                params:{
-                                    store_id_list: 3,
-                                    product_id: item.id,
-                                    store_id: item.store_id,
-                                    delivery_code: 3,
-                                    food:item
+                                pathname:'/detail/goods/'+item.id,
+                                food:{
+                                    target_id: item.id,
+                                    price: item.price,
+                                    volume:item.volume
                                 }}} key={item.id} className={item.id === product_id ? 'active' : ''} >
                                 {item.volume}
                                 <span>明日达</span>
@@ -112,7 +110,7 @@ function Evaluate(props) {
 
             </ul>
             <div className="moreEvalue">
-                <Link to={{pathname:'/detail/comment',params:props.params}} >查看全部评价</Link>
+                <Link to={{pathname:'/detail/comment/'+props.id}} >查看全部评价</Link>
             </div>
         </div>
     )
@@ -132,18 +130,19 @@ class Goods extends Component{
         this.getData(this.props);
     }
     getData(props){
-        let { params} = props.location;
-        if(params){
+        // let { params} = props.location;
+        let { params } = props.match;
+        if(params.id){
             axios.get('/sjm/v3/product/detail',{
                 params:{
-                    store_id_list: params.store_id_list,
-                    store_id: params.store_id,
-                    delivery_code: params.delivery_code,
-                    product_id:params.product_id
+                    store_id_list: 3,
+                    store_id: 3,
+                    delivery_code: 3,
+                    product_id:params.id
                 }
             }).then(res => {
                 let { data } = res.data;
-                data.product_id = params.product_id;
+                data.product_id = params.id;
 
                 this.setState({
                     info: data
@@ -151,7 +150,7 @@ class Goods extends Component{
             })
             axios.get('/sjm/v3/comment/rate_and_comment',{
                 params:{
-                    product_id: params.product_id
+                    product_id: params.id
                 }
             }).then(res => {
                 let { data } = res.data;
@@ -164,6 +163,7 @@ class Goods extends Component{
     render(){
         let {info,comment} = this.state
         let {params} =  this.props.location;
+
         return (
             <div className="detail_goods">
                 <div className='detail_banner_wrap loading2'>
@@ -174,7 +174,7 @@ class Goods extends Component{
                 </div>
                 <Address></Address>
                 <Tips></Tips>
-                <Evaluate comment={comment} params={params}></Evaluate>
+                <Evaluate comment={comment} id={info.product_id}></Evaluate>
 
             </div>
         )

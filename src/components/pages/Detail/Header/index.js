@@ -5,35 +5,31 @@ class Header extends Component{
     constructor(props){
         super(props)
         this.state = {
-            params: {}
+            id: ''
         }
     }
     componentWillMount(){
-        let { params}  = this.props.location;
+        let id = this.props.location.pathname.split('/')[3];
         let { history } = this.props;
-        if(params){
+        if( id ){
             this.setState({
-                params: params
+                id: id
             })
-        }else{
-            history.replace('/')
         }
     }
-    componentWillReceiveProps(){
-        let { params }  = this.props.location;
+    componentWillReceiveProps(props){
+        let id = props.location.pathname.split('/')[3];
         let { history } = this.props;
-        if(params){
+        if( id ){
             this.setState({
-                params: params
+                id: id
             })
-        }else{
-            history.replace('/')
         }
     }
     componentDidMount(){
     }
     render(){
-        let { params } = this.state
+        let { id } = this.state
         return (
             <div className='detail_header'>
                 <Link to='/'>
@@ -42,9 +38,9 @@ class Header extends Component{
                     </div>
                 </Link>
                 <ul className="nav">
-                    <li><NavLink to={{pathname:'/detail/goods',params:params}}>商品</NavLink></li>
-                    <li><NavLink to={{pathname:'/detail/det',params:params}}>详情</NavLink></li>
-                    <li><NavLink to={{pathname:'/detail/comment',params:params}}>评价</NavLink></li>
+                    <li><NavLink to={{pathname:'/detail/goods/'+id}}>商品</NavLink></li>
+                    <li><NavLink to={{pathname:'/detail/det/'+id}}>详情</NavLink></li>
+                    <li><NavLink to={{pathname:'/detail/comment/'+id}}>评价</NavLink></li>
                 </ul>
                 <div className="more">
                     <i className="fa fa-reorder"></i>

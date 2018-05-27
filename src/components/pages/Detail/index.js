@@ -23,9 +23,9 @@ class Detail extends Component {
             <div className='detail'>
                 <Header></Header>
                 <Switch>
-                    <Route path='/detail/goods' component={Goods}></Route>
-                    <Route path='/detail/det' component={Det} ></Route>
-                    <Route path='/detail/comment' component={Comment} ></Route>
+                    <Route path='/detail/goods/:id' component={Goods}></Route>
+                    <Route path='/detail/det/:id' component={Det} ></Route>
+                    <Route path='/detail/comment/:id' component={Comment} ></Route>
                 </Switch>
                 <Footer food={food}></Footer>
             </div>

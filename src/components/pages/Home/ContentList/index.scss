@@ -19,17 +19,16 @@
     }
   }
   .good_list{
-    height: 3.46rem;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    border-radius: 3rem/.25rem .25rem 0 0;
-    -webkit-border-radius: 3rem/.25rem .25rem 0 0;
+    //border-radius: 3rem/.25rem .25rem 0 0;
+    //-webkit-border-radius: 3rem/.25rem .25rem 0 0;
     background: #fff;
     position: relative;
-    margin-top: -.24rem;
+    padding-bottom: .08rem;
     li{
       height: 1.68rem;
       width: 1.1831rem;

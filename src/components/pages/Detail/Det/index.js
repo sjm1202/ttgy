@@ -9,14 +9,14 @@ class Det extends Component{
         }
     }
     componentDidMount(){
-        let { params } = this.props.location;
-        if(params){
+        let { params } = this.props.match;
+        if(params.id){
             axios.get('/sjm/v3/product/detail',{
                 params:{
-                    store_id_list: params.store_id_list,
-                    product_id: params.product_id,
-                    store_id: params.store_id,
-                    delivery_code: params.delivery_code
+                    store_id_list: 3,
+                    product_id: params.id,
+                    store_id: 3,
+                    delivery_code: 3
                 }
             }).then(res => {
                 let { data } = res.data;

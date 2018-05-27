@@ -109,13 +109,17 @@
                     border-bottom:1px solid #D0D0D0;
                     align-items: center;
                     .check{
-                        width: 0.16rem;
-                        height: 0.16rem;
-                        border-radius: 50%;
-                        background: #FF8000;
+                        //width: 0.16rem;
+                        //height: 0.16rem;
+                        //border-radius: 50%;
+                        //background: #FF8000;
                         margin:  0.1rem;
-                        i{
-                            color: #fff;
+                        //i{
+                        //    color: #fff;
+                        //}
+                        .fa{
+                            color: #FF8000;
+                            font-size: .2rem;
                         }
                     }
                     .img-box{

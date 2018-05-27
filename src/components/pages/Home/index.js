@@ -13,7 +13,6 @@ class Home extends Component{
             <div className='home'>
                 <Header></Header>
                 <Banner></Banner>
-                <Activity></Activity>
                 <ContentItem></ContentItem>
                 <TabBar/>
             </div>

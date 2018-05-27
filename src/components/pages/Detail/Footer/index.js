@@ -8,36 +8,43 @@ class Footer extends Component{
     constructor(props){
         super(props);
         this.state = {
-            food:{}
+            food: null
         }
     }
     componentWillReceiveProps(props){
-        let {params} = props.location
-        let temp ={...this.state.food};
-        temp.target_id = params.product_id
-        temp.price = params.food.price
-        temp.volume = params.food.volume
-        this.setState({food:temp})
+        let food = {...this.state.food}
+        let id = props.location.pathname.split('/')[3];
+        if(id && props.location.food && id != food.target_id){
+            food.target_id = id;
+            food.price = props.location.food.price;
+            food.volume = props.location.food.volume;
+            this.setState({food})
+        }
     }
     componentDidMount(){
-        let {params} = this.props.location
-        if(params){
-            let food = params.food
-            this.setState({food:food})
+        let {food} = this.props.location;
+        let {history} = this.props;
+        if(!food){
+            food = JSON.parse(localStorage.food || '{}');
+        }else{
+            localStorage.food = JSON.stringify(food);
+        }
+        if(food.target_id){
+            this.setState({food});
+        }else{
+            history.replace('/');
         }
     }
     addFood(food,e){
-        e.preventDefault()
-        let {addFoodToCart} = this.props
+        e.preventDefault();
+        let {addFoodToCart} = this.props;
         if(food){
-            addFoodToCart(food)
+            addFoodToCart(food);
         }
     }
     render(){
-
-        let {food} = this.state
-        if(!food) return null
-        console.log(food)
+        let {food} = this.state;
+        if(!food) return null;
         return (
             <div className="goods_Footer">
                 <Link to={'/cart'}>

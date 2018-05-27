@@ -34,19 +34,20 @@ class Banner extends  Component{
     }
     componentDidUpdate(){
         let{el,el2} = this;
-        this.swiper = new Swiper(el,{
-            pagination: {
-                el: el2
-            },
-            autoplay: true,
-            loop: true
+        if(!this.swiper && this.state.banners.length > 0){
+            this.swiper = new Swiper(el,{
+                pagination: {
+                    el: el2
+                },
+                loop: true,
+                autoplay: true
             })
+        }
     }
     componentWillUnmount () {
         this.unMountFlag = true;
     }
     render () {
-
         return (
             <div className="swiper-container" ref={el => this.el = el}>
                 <div className="swiper-wrapper loading">

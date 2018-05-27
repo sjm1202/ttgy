@@ -25,24 +25,25 @@ function GoodList(props) {
         <ul className="good_list">
             {
                 content.map((item) => {
+                    let food = {
+                        target_id: item.target_id,
+                        title: item.title,
+                        image: item.image,
+                        price: item.price,
+                        volume: item.volume,
+                    }
                     return (
                         <li key={item.banner_ad_id}>
                             <NavLink to={{
-                                pathname:'/detail/goods',
-                                params:{
-                                    store_id_list: 3,
-                                    product_id: item.target_id,
-                                    store_id: item.store_id,
-                                    delivery_code: 3,
-                                    food:item
-                                    }
+                                pathname:'/detail/goods/'+item.target_id,
+                                food
                                 }}>
                                 <div className="imgBox">
                                     <img src={item.image} alt=""/>
                                 </div>
                                 <p className="title">{item.title}</p>
                                 <span className="price">￥{item.price}/<em>{item.volume}</em></span>
-                                <i className="fa fa-plus-circle" onClick={addFood.bind(this,item)}></i>
+                                <i className="fa fa-plus-circle" onClick={addFood.bind(this,food)}></i>
                             </NavLink>
                         </li>
                     )
@@ -57,16 +58,18 @@ function ColList(props) {
     return (
         <ul className="colList">
             {content.map(item => {
+                let food = {
+                    target_id: item.target_id,
+                        titel: item.title,
+                        image: item.image,
+                        price: item.price,
+                        volume: item.volume,
+                }
                 return (
                     <li key={item.banner_ad_id}>
                         <NavLink to={{
-                            pathname:'/detail/goods',
-                            params:{
-                                store_id_list: 3,
-                                product_id: item.target_id,
-                                store_id: item.store_id,
-                                delivery_code: 3
-                            }
+                            pathname:'/detail/goods/'+item.target_id,
+                            food
                         }}>
                         <div className="imgBox">
                             <img src={item.image} alt=""/>
@@ -75,7 +78,7 @@ function ColList(props) {
                             <h5 className='title'>{item.title}</h5>
                             <p className="describe">{item.subtitle}</p>
                             <span className='price'>￥{item.price}/<em>{item.volume}</em></span>
-                            <i className="fa fa-plus-circle" onClick={addFood.bind(this,item)}></i>
+                            <i className="fa fa-plus-circle" onClick={addFood.bind(this,food)}></i>
                         </div>
                         </NavLink>
                     </li>
@@ -83,6 +86,22 @@ function ColList(props) {
                 )
             })}
         </ul>
+    )
+}
+function Activity(props){
+    let {content} = props
+    return (
+        <div className="activity">
+            {content.map(( item ) => {
+                return (
+                    <a className="imgBox" key={item.banner_ad_id}>
+                        <img src={item.image} alt=""/>
+                    </a>
+
+                )
+            })}
+
+        </div>
     )
 }
 class ContentList extends Component {
@@ -106,7 +125,7 @@ class ContentList extends Component {
             if( this.unMountFlag ){
                 return;
             }
-            let items = res.data.data.banner.mainBanners.slice(3);
+            let items = res.data.data.banner.mainBanners;
             this.setState({
                 contentItems:items
             })
@@ -143,6 +162,8 @@ class ContentList extends Component {
                         case 'normalBanner_v51':
                             return <ColList content = {item.content} key={item.group_id} addFood={this.addFood}/>
                             break;
+                        case '2nBanner_v51':
+                            return <Activity content = {item.content} key={item.group_id}></Activity>
                         default:
                             return null;
                         break;

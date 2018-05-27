@@ -23,6 +23,9 @@ class Cart extends Component{
             delFoodFromCart(food)
         }
     }
+    checkFood(){
+
+    }
     renderKinds(){
         return(
             <div className='cart-one'>
@@ -87,7 +90,10 @@ class Cart extends Component{
                                     foodList.map(item=> {
                                         return (
                                             <li className='item' key={item.target_id}>
-                                                <div className='check'><i className='fa fa-check'></i></div>
+                                                <div className='check'>
+                                                    {/*<i className='fa fa-circle-o'></i>*/}
+                                                    <i className='fa fa-check-circle'></i>
+                                                </div>
                                                 <div className='img-box'>
                                                     <img src={item.image} alt=''/>
                                                 </div>

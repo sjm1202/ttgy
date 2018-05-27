@@ -36,11 +36,17 @@ class Comment extends Component {
             commentLevel:null,
             commentList:[],
             hasMore: true,
-            loading: false
+            loading: false,
+            showAll: true
         },
         this.page = 1;
         this.num = 20;
-        this.onReachEnd = this.onReachEnd.bind(this)
+        this.onReachEnd = this.onReachEnd.bind(this);
+        this.changeShowAll = this.changeShowAll.bind(this);
+    }
+    changeShowAll(e){
+        e.preventDefault()
+        this.setState({showAll:!this.state.showAll})
     }
     getDate(){
         if(this.state.loading) return
@@ -73,9 +79,9 @@ class Comment extends Component {
         return result;
     }
     componentDidMount(){
-        let { params } = this.props.location;
-        if(!params) return
-        this.product_id = params.product_id
+        let { params } = this.props.match;
+        if(!params.id) return
+        this.product_id = params.id
         axios.get('/sjm/v3/comment/rate_and_comment',{
             params:{
                 product_id: this.product_id
@@ -89,7 +95,7 @@ class Comment extends Component {
         this.getDate()
     }
     render() {
-        let {commentLevel, commentList, loading, hasMore} = this.state;
+        let {commentLevel, commentList, loading, hasMore, showAll} = this.state;
         if(!commentLevel){
             return null;
         }
@@ -115,9 +121,11 @@ class Comment extends Component {
                     <span className='active'>评价({commentLevel.num.total})</span>
                     <span>晒图({commentLevel.num.has_image})</span>
                 </div>
-                <div className="tip">
-                    <i className='fa fa-check-circle'></i>
-                    {/*<i className='fa fa-circle-o'></i>*/}
+                <div className="tip" onClick={this.changeShowAll}>
+                    {
+                        showAll ? <i className='fa fa-circle-o'></i> : <i className='fa fa-check-circle'></i>
+                    }
+
                     <span>只看有内容的评价</span>
                 </div>
                 <ListView
